@@ -22,12 +22,10 @@
     <ClCompile Include="src\Manage\Manage.cpp" />
     <ClCompile Include="src\UI\Panel.cpp" />
     <ClCompile Include="src\Evaluate\Evaluator.cpp" />
-    <ClCompile Include="src\Evaluate\Pattern.cpp" />
     <ClCompile Include="src\Evaluate\SingleEvaluator.cpp" />
     <ClCompile Include="src\Manage\Player.cpp" />
     <ClCompile Include="src\Manage\VictoryCheek.cpp" />
     <ClCompile Include="src\Rule\Board.cpp" />
-    <ClCompile Include="src\Rule\Position.cpp" />
     <ClCompile Include="src\Test\MainTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -35,7 +33,7 @@
     <ClInclude Include="src\Include\Panel.h" />
     <ClInclude Include="src\Include\Board.h" />
     <ClInclude Include="src\Include\Evaluator.h" />
-    <ClInclude Include="src\Include\Pattern.h" />
+    <ClInclude Include="src\include\Position.h" />
     <ClInclude Include="src\Include\SingleEvaluator.h" />
     <ClInclude Include="src\include\STD.h" />
     <ClInclude Include="src\Include\VictoryCheeker.h" />

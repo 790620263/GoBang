@@ -25,11 +25,11 @@ int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 	{
 	case 0:
 		i = 0;
-		j = 1;
+		j = -1;
 			break;
 	case 1:
 		i = 1;
-		j = 1;
+		j = -1;
 		break;
 	case 2:
 		i = 1;
@@ -37,15 +37,15 @@ int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 		break;
 	case 3:
 		i = 1;
-		j = -1;
+		j = 1;
 		break;
 	case 4:
 		i = 0;
-		j = -1;
+		j = 1;
 		break;
 	case 5:
 		i = -1;
-		j = -1;
+		j = 1;
 		break;
 	case 6:
 		i = -1;
@@ -53,11 +53,10 @@ int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 		break;
 	case 7:
 		i = -1;
-		j = 1;
+		j = -1;
 		break;
 	default:
-		//std::cout << "Board::getCodeOffsetPosi";
-		return -1;
+		throw "·Ç·¨µÄaxis";
 	}
 	x += i * offset;
 	y += j * offset;

@@ -4,6 +4,7 @@
 #include "VictoryCheeker.h"
 #include "Panel.h"
 #include "Evaluator.h"
+#include "SingleEvaluator.h"
 class Manager
 {
 public:
@@ -16,6 +17,7 @@ public:
 private:
 	Board b;
 	Panel panel;
+	SingleEvaluator eva;
 	//void init()
 	//{
 	//	PatternList::initPattern();

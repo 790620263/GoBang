@@ -18,9 +18,6 @@
     <ClCompile Include="src\Evaluate\Evaluator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Evaluate\Pattern.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\Evaluate\SingleEvaluator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -34,9 +31,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Test\MainTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Rule\Position.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\UI\Panel.cpp">
@@ -53,9 +47,6 @@
     <ClInclude Include="src\Include\Evaluator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Include\Pattern.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\Include\SingleEvaluator.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -69,6 +60,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\include\STD.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\Position.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

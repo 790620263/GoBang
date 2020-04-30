@@ -1,5 +1,5 @@
 #include "../include/Manage.h"
-
+#include <iostream>
 Manager::Manager()
 {
 	//b = *(new Board());
@@ -48,15 +48,20 @@ void Manager::ai_vs_peo()
 		panel.getInput(x, y, b);
 
 		b.setPlayerCode(x, y, Panel::BLACK);
-		panel.drawBoard(b);
+		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
+		score = eva.evaluate(b, x, y, Panel::BLACK);
+ 		panel.drawBoard(b);
 		panel.drawScore(x, y, score);
 
 		end = isEnd(x, y, Panel::BLACK);
 
-		Evaluator::getBestPosition(b,x,y,Panel::WHITE,score)
-		b.setPlayerCode(x, y, Panel::BLACK);
+		eva.getBestPosition(b, x, y, Panel::WHITE, score);
+		
+		b.setPlayerCode(x, y, Panel::WHITE);
 		panel.drawBoard(b);
 		panel.drawScore(x, y, score);
+
+		end = isEnd(x, y, Panel::WHITE);
 	}
 }
 

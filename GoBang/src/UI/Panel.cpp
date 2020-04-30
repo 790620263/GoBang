@@ -57,7 +57,7 @@ void Panel::printMsg(std::string msg)
 	cout << msg << endl;
 }
 void Panel::clear() {
-	system("cls");
+	//system("cls");
 }
 void Panel::clearLine(int lineNum) {
 	for (int i = 0; i < lineNum; i++)
