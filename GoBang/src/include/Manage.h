@@ -2,8 +2,8 @@
 #define _MANAGE_H_
 #include "Board.h"
 #include "VictoryCheeker.h"
-#include "../include/Panel.h"
-
+#include "Panel.h"
+#include "Evaluator.h"
 class Manager
 {
 public:

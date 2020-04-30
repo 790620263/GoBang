@@ -2,13 +2,13 @@
 
 Manager::Manager()
 {
-	b = *(new Board());
+	//b = *(new Board());
 	panel.drawBoard(b);
 }
 
 Manager::~Manager()
 {
-	delete &b;
+	//delete &b;
 }
 
 bool Manager::isEnd(int x, int y, int playCode)
@@ -40,22 +40,27 @@ bool Manager::isEnd(int x, int y, int playCode)
 
 void Manager::ai_vs_peo()
 {
-
-}
-
-void Manager::ai_vs_ai()
-{
-	bool isEnd = false;
+	bool end = false;
 	int x, y, score = 0;
 	//默认人先手
-	while (!isEnd)
+	while (!end)
 	{
-		panel.getInput(x, y, b.getSize());
+		panel.getInput(x, y, b);
 
 		b.setPlayerCode(x, y, Panel::BLACK);
 		panel.drawBoard(b);
 		panel.drawScore(x, y, score);
 
+		end = isEnd(x, y, Panel::BLACK);
 
+		Evaluator::getBestPosition(b,x,y,Panel::WHITE,score)
+		b.setPlayerCode(x, y, Panel::BLACK);
+		panel.drawBoard(b);
+		panel.drawScore(x, y, score);
 	}
+}
+
+void Manager::ai_vs_ai()
+{
+
 }

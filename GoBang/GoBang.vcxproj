@@ -37,6 +37,7 @@
     <ClInclude Include="src\Include\Evaluator.h" />
     <ClInclude Include="src\Include\Pattern.h" />
     <ClInclude Include="src\Include\SingleEvaluator.h" />
+    <ClInclude Include="src\include\STD.h" />
     <ClInclude Include="src\Include\VictoryCheeker.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

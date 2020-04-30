@@ -68,5 +68,8 @@
     <ClInclude Include="src\include\Manage.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\include\STD.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

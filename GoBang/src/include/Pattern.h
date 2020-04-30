@@ -1,26 +1,28 @@
 #ifndef _PATTERNLIST_H_
 #define _PATTERNLIST_H_
+#define SCORE_V4 10000000;
+#define SCORE_D4 1000000;
+#define SCORE_V3 100000;
+#define SCORE_V2 10000;
+#define SCORE_D3 8000;
+#define SCORE_OTHERS 1000;
 #include<string>
-#include<vector>
-using namespace std;
 struct Pattern
 {
-    int index = 6;//���ͱ��Ĭ��other
-    vector<string> order;
+	string order;
+	int score = 0;
 };
-class PatternList {
-private:
+//*为当前位置，0为空位，1为对方，2为我方
+Pattern patlist[]=
+{
+	struct Pattern{order="*22220"，score = SCORE_V4 }，//_●●●●_
 
-public:
-	 static const int PATTERN_NUM = 7;
-	 static Pattern list_p[7];
-	 static int scoreList[7];
-
-	 static void initPattern();
-	 static int getScore(int patternCode);
-	 static bool isMatch(string str, int patternCode);
-};
-
-
+	struct Pattern{order = "*22221"，score = SCORE_D4}，//_●●●●○
+	struct Pattern{order = "2*222"，score = SCORE_D4}，//●_●●●
+	struct Pattern{order = "22*22"，score = SCORE_D4}，// ●●_●●
+	
+	struct Pattern{order = "*2220"，score = SCORE_V3}，//_●●●
+	
+}
 #endif // PATTERNLIST_H_
 

@@ -5,10 +5,8 @@
 class Evaluator
 {
     public:
-        Evaluator();
-        virtual ~Evaluator();
-        int evaluate(Board& b,int x,int y,int playerCode);
-        void getBestPosition(Board& b,int &x,int &y,int &playerCode,int &score);
+        static int evaluate(const Board& b,const int x,const int y,const int playerCode);
+        static void getBestPosition(const Board& b,const int &x,const int &y,const int &playerCode,int &score);
     protected:
 
     private:

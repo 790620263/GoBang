@@ -44,9 +44,10 @@ bool VictoryCheeker::have_five(Board &b, int x, int y, int playerCode)
 	{
 		for (int j = 0; j < 2; j++)
 		{
-			if (i != 0 || y != 0)
+			if (i != 0 || j != 0)
 			{
-				if (how_many(b, x, y, playerCode, i, j)+how_many(b, x, y, playerCode, -i, -j)-1>=5)return true;
+				if (how_many(b, x, y, playerCode, i, j)+how_many(b, x, y, playerCode, -i, -j)-1>=5)
+					return true;
 			}
 		}
 	}
