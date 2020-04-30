@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Evaluate\Evaluate.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\Evaluate\Evaluator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -27,25 +24,25 @@
     <ClCompile Include="src\Evaluate\SingleEvaluator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Manage\Manager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\Manage\Player.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Manage\VictoryCheek.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rule\Axis.cpp">
+    <ClCompile Include="src\Rule\Board.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rule\Board.cpp">
+    <ClCompile Include="src\Test\MainTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Rule\Position.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Test\MainTest.cpp">
+    <ClCompile Include="src\UI\Panel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Manage\Manage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,16 +56,16 @@
     <ClInclude Include="src\Include\Pattern.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Include\project.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\Include\SingleEvaluator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Include\STD.h">
+    <ClInclude Include="src\Include\VictoryCheeker.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\Include\VictoryCheeker.h">
+    <ClInclude Include="src\Include\Panel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\Manage.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

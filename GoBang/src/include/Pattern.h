@@ -1,7 +1,8 @@
 #ifndef _PATTERNLIST_H_
 #define _PATTERNLIST_H_
-#include "STD.h"
-
+#include<string>
+#include<vector>
+using namespace std;
 struct Pattern
 {
     int index = 6;//¿‡–Õ±‡∫≈ƒ¨»œother

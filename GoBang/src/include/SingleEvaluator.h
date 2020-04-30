@@ -1,7 +1,7 @@
 #ifndef SINGLEEVALUATOR_H
 #define SINGLEEVALUATOR_H
 
-#include <Evaluator.h>
+#include "Evaluator.h"
 
 
 class SingleEvaluator : public Evaluator

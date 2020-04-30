@@ -1,4 +1,3 @@
-#include "../include/STD.h"
 #include "../include/Board.h"
 bool Board::setPlayerCode(int x, int y, int playerCode)
 {
@@ -57,7 +56,7 @@ int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 		j = 1;
 		break;
 	default:
-		std::cout << "Board::getCodeOffsetPosi";
+		//std::cout << "Board::getCodeOffsetPosi";
 		return -1;
 	}
 	x += i * offset;
@@ -84,19 +83,26 @@ bool Board::isInBoard(int x, int y)
 	}
 }
 
-void Board::print()
+//void Board::print()
+//{
+//	for (int x = 0; x < size; x++)
+//	{
+//		for (int y = 0; y<size; y++)
+//		{
+//			std::cout<<' ' << board[x][y];
+//		}
+//		std::cout << std::endl;
+//	}
+//}
+
+Board::Board()
 {
+	int board[DefaultSize][DefaultSize]={ 0 };
 	for (int x = 0; x < size; x++)
 	{
-		for (int y = 0; y<size; y++)
+		for (int y = 0; y < size; y++)
 		{
-			std::cout<<' ' << board[x][y];
+			board[x][y] = 0;
 		}
-		std::cout << std::endl;
 	}
 }
-
-Board::Board(int size)
-{
-	this->size = size;
-};

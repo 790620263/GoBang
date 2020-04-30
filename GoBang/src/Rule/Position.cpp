@@ -1,14 +1,5 @@
-class Position
+struct Position
 {
-public:
-	Position(int x, int y);
-	int x = 0, y = 0;
-
-private:
+	int x = 0;
+	int y = 0;
 };
-
-Position::Position(int x,int y)
-{
-	this->x = x;
-	this->y = y;
-}
