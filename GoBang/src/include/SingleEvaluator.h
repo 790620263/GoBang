@@ -23,7 +23,7 @@ class SingleEvaluator : public Evaluator
 		static const int  SCORE_D4 = 1000000;
 		static const int  SCORE_V3 = 100000;
 		static const int  SCORE_D3 = 10000;
-		static const int  SCORE_V2 = 1000;
+		static const int  SCORE_V2 = 8000;
 		static const int  SCORE_D2 = 100;
 		static const int  SCORE_OTHERS = 0;
 		static const int  PATTERN_NUM = 33;

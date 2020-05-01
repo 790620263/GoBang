@@ -42,30 +42,56 @@ void Manager::ai_vs_peo()
 {
 	bool end = false;
 	int x, y, score = 0;
-	//默认人先手
+	//默认人(白棋）先手
 	while (!end)
 	{
 		panel.getInput(x, y, b);
 
-		b.setPlayerCode(x, y, Panel::BLACK);
+		b.setPlayerCode(x, y, Panel::WHITE);
 		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
-		score = eva.evaluate(b, x, y, Panel::BLACK);
+		score = eva.evaluate(b, x, y, Panel::WHITE);
  		panel.drawBoard(b);
+		panel.drawScore(x, y, score);
+
+		end = isEnd(x, y, Panel::WHITE);
+
+		eva.getBestPosition(b, x, y, Panel::BLACK, score);
+		
+		b.setPlayerCode(x, y, Panel::BLACK);
+		panel.drawBoard(b);
+		panel.drawScore(x, y, score);
+
+		end = isEnd(x, y, Panel::BLACK);
+	}
+}
+
+void Manager::ai_vs_ai()
+{
+	bool end = false;
+	int x=8, y=8, score = 0;
+
+	b.setPlayerCode(x, y, Panel::WHITE);
+	panel.drawBoard(b);
+	panel.drawScore(x, y, score);
+
+	end = isEnd(x, y, Panel::WHITE);
+	//默认白棋先手
+	while (!end)
+	{
+		eva.getBestPosition(b, x, y, Panel::BLACK, score);
+
+		b.setPlayerCode(x, y, Panel::BLACK);
+		panel.drawBoard(b);
 		panel.drawScore(x, y, score);
 
 		end = isEnd(x, y, Panel::BLACK);
 
 		eva.getBestPosition(b, x, y, Panel::WHITE, score);
-		
+
 		b.setPlayerCode(x, y, Panel::WHITE);
 		panel.drawBoard(b);
 		panel.drawScore(x, y, score);
 
 		end = isEnd(x, y, Panel::WHITE);
 	}
-}
-
-void Manager::ai_vs_ai()
-{
-
 }

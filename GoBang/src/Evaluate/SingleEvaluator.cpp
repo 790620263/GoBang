@@ -1,7 +1,7 @@
 #include "../include/SingleEvaluator.h"
 #include "../include/Board.h"
-#include "../include/Pattern.h"
 #include <iostream>
+#include<random>
 SingleEvaluator::SingleEvaluator()
 {
     //ctor
