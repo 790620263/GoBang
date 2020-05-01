@@ -1,5 +1,6 @@
 #include "../include/Evaluator.h"
-
+#include<cstdlib>
+#include<ctime>
 
 //2是自己，1是对手,0是没有
 int Evaluator::evaluate(Board& b, const int x, const int y, const int playerCode)
@@ -48,6 +49,38 @@ Position* Evaluator::getAvailablePosition(Board& b,int &size)
 			//if (code == 0)plist[size] = Position{ x,y };
 		}
 	}
+
+	srand(time(NULL));
+	int rnd;
+	for (int i = 0; i < size; i++)
+	{
+		rnd = rand() % size;
+		Position tmpp = plist[i];
+		plist[i] = plist[rnd];
+		plist[rnd] = tmpp;
+	}
+
 	return plist;
 }
+//返回长度为8的数组
+//void Evaluator::getRandomAxisList(int list[8])
+//{
+//	srand(time(NULL));
+//	int rnd; bool isExist = false;
+//	for (int i = 0; i < 8; i++)
+//	{
+//		do {
+//			isExist = false;
+//			rnd = rand() % 8;
+//			for (int j = 0; j < i; j++)
+//			{
+//				if (list[j] == rnd) {
+//					isExist = true; break;
+//				}
+//			}
+//		} while (isExist);
+//		list[i] = rnd;
+//		
+//	}
+//}
 //KEY，估值函数，匹配各种棋势

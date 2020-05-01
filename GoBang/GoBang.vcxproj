@@ -28,6 +28,7 @@
     <ClCompile Include="src\Manage\VictoryCheek.cpp" />
     <ClCompile Include="src\Rule\Board.cpp" />
     <ClCompile Include="src\Test\MainTest.cpp" />
+    <ClCompile Include="src\Evaluate\Tree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\include\MultiGreedyEvaluator.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="src\Include\SingleEvaluator.h" />
     <ClInclude Include="src\include\STD.h" />
     <ClInclude Include="src\Include\VictoryCheeker.h" />
+    <ClInclude Include="src\include\Tree.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

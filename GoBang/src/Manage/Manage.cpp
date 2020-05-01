@@ -10,14 +10,17 @@ Manager::~Manager()
 {
 	//delete &b;
 }
-
-bool Manager::isEnd(int x, int y, int playCode)
+//返回胜利者编号,-1表示平局
+int Manager::play(int x, int y, int playCode,int score)
 {
+	b.setPlayerCode(x, y, playCode);
+	panel.drawBoard(b,x,y);
+	panel.drawScore(x, y, score);
 
 	if (VictoryCheeker::isFull(b))
 	{//棋盘满了，平局
 		panel.printMsg("平局");
-		return true;
+		return -1;
 	}
 	else
 	{
@@ -31,67 +34,50 @@ bool Manager::isEnd(int x, int y, int playCode)
 			{
 				panel.printMsg("白棋获胜");
 			}
-			return true;
+			return playCode;
 		}
 		
 	}
+
+	//Sleep(1000);
 	return false;
 }
 
-void Manager::ai_vs_peo()
+int Manager::ai_vs_peo()
 {
-	bool end = false;
+	int winner = 0;
 	int x, y, score = 0;
 	//默认人(白棋）先手
-	while (!end)
+	while (winner==0)
 	{
 		panel.getInput(x, y, b);
-
-		b.setPlayerCode(x, y, Panel::WHITE);
+		winner=play(x, y, Panel::WHITE, score);
 		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
-		score = eva.evaluate(b, x, y, Panel::WHITE);
- 		panel.drawBoard(b);
-		panel.drawScore(x, y, score);
 
-		end = isEnd(x, y, Panel::WHITE);
+		if (winner!=0)break;
 
 		eva.getBestPosition(b, x, y, Panel::BLACK, score);
-		
-		b.setPlayerCode(x, y, Panel::BLACK);
-		panel.drawBoard(b);
-		panel.drawScore(x, y, score);
-
-		end = isEnd(x, y, Panel::BLACK);
+		play(x, y, Panel::BLACK, score);
 	}
+	return winner;
 }
 
-void Manager::ai_vs_ai()
+int Manager::ai_vs_ai()
 {
-	bool end = false;
-	int x=8, y=8, score = 0;
+	int winner = 0;
+	int x=b.getSize()/2, y=b.getSize()/2, score = 0;
 
-	b.setPlayerCode(x, y, Panel::WHITE);
-	panel.drawBoard(b);
-	panel.drawScore(x, y, score);
-
-	end = isEnd(x, y, Panel::WHITE);
+	winner= play(x, y, Panel::WHITE,score);
 	//默认白棋先手
-	while (!end)
+	while (winner == 0)
 	{
 		eva.getBestPosition(b, x, y, Panel::BLACK, score);
+		winner = play(x, y, Panel::BLACK, score);
 
-		b.setPlayerCode(x, y, Panel::BLACK);
-		panel.drawBoard(b);
-		panel.drawScore(x, y, score);
-
-		end = isEnd(x, y, Panel::BLACK);
+		if (winner != 0)break;
 
 		eva.getBestPosition(b, x, y, Panel::WHITE, score);
-
-		b.setPlayerCode(x, y, Panel::WHITE);
-		panel.drawBoard(b);
-		panel.drawScore(x, y, score);
-
-		end = isEnd(x, y, Panel::WHITE);
+		winner = play(x, y, Panel::WHITE, score);
 	}
+	return winner;
 }

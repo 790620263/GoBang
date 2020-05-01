@@ -3,7 +3,7 @@
 
 #include "Evaluator.h"
 #include "SingleEvaluator.h"
-class MultiGreedyEvaluator :SingleEvaluator
+class MultiGreedyEvaluator :Evaluator
 {
 public:
 	int evaluate(Board& b, const int x, const int y, const int playerCode);
@@ -11,8 +11,9 @@ public:
 	
 private:
 	const int defaultSearchDeep = 3;
-
-	void getBestPosition(Board& b, const int& x, const int& y, const int& playerCode, int& score, int nowDeep);
+	SingleEvaluator seva;
+	int evaluateWithDeep(Board& b, const int x, const int y, const int playerCode,int nowDeep );
+	int evaluateNodeValue(Board& b,int playerCode);
 };
 
 

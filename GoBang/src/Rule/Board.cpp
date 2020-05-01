@@ -1,4 +1,5 @@
 #include "../include/Board.h"
+#include <iostream>
 bool Board::setPlayerCode(int x, int y, int playerCode)
 {
 	if (isInBoard(x, y)) {
@@ -56,7 +57,8 @@ int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 		j = -1;
 		break;
 	default:
-		throw "非法的axis";
+		//throw "非法的axis";
+		std::cout << "非法的axis" << std::endl;
 	}
 	x += i * offset;
 	y += j * offset;

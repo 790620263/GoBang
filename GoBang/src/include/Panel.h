@@ -13,6 +13,7 @@ public:
 
     void setColor(int background, int foreground);
 
+    void drawBoard(Board& b, int newX, int newY);
     void drawBoard(Board& b);
     void drawScore(int x, int y, int sc);
     void printMsg(std::string msg);

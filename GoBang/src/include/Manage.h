@@ -11,9 +11,9 @@ public:
 	Manager();
 	~Manager();
 
-	bool isEnd(int x, int y, int playCode);
-	void ai_vs_peo();
-	void ai_vs_ai();
+	int play(int x, int y, int playCode,int score);
+	int ai_vs_peo();
+	int ai_vs_ai();
 private:
 	Board b;
 	Panel panel;

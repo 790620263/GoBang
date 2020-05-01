@@ -17,7 +17,7 @@ void Panel::setColor(int background, int foreground)
 	SetConsoleTextAttribute(hOut, wr1);
 }
 
-void Panel::drawBoard(Board &b) {
+void Panel::drawBoard(Board &b,int newX,int newY) {
 	clear();
 	int size = b.getSize();
 
@@ -33,21 +33,34 @@ void Panel::drawBoard(Board &b) {
 		for (int x = 0; x < size; x++)
 		{
 			cout << setw(5);
-			switch (b.getPlayerCode(x, y))
-			{
-			case 0:
-				cout << '+';
-				break;
-			case WHITE:
-				cout << "¡ð";
-				break;
-			default :
-				cout << "¡ñ";
-				break;
-			}
+
+				switch (b.getPlayerCode(x, y))
+				{
+				case 0:
+					cout << '+';
+					break;
+				case WHITE:
+					if (x == newX && y == newY)
+						cout << "¡î";
+					else 
+						cout << "¡ð";
+					break;
+				default:
+					if (x == newX && y == newY)
+						cout << "¡ï";
+					else
+					cout << "¡ñ";
+					break;
+				}
+			
+
 		}
 		cout<<'\n' << endl;
 	}
+}
+void Panel::drawBoard(Board& b)
+{
+	drawBoard(b, -1, -1);
 }
 void Panel::drawScore(int x,int y,int score) {
 	cout << "Âä×ÓÎ»ÖÃ£º" << setw(5) << x << setw(5) << y << '\t' << "£¬Score= " << score << endl;

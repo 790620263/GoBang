@@ -2,7 +2,7 @@
 #define _BOARD_H_
 class Board {
 private:
-	static const int DefaultSize =16;
+	static const int DefaultSize =18;
 	int size = DefaultSize;
 
 	int board[DefaultSize][DefaultSize] = { 0 };//x,y,存储的值表示该处子属于哪位玩家
