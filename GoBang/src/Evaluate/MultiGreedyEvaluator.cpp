@@ -16,6 +16,10 @@ int MultiGreedyEvaluator::evaluateWithDeep(Board& b, const int x, const int y, c
 {
 	int opponentCode = playerCode == 1 ? 2 : 1;
 	int score = 0;
+	Position* plist; int psize;
+	plist=seva.getAvailablePosition(b, psize);
+
+
 	if (nowDeep < defaultSearchDeep)
 	{
 		score+=
