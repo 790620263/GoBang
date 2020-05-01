@@ -1,8 +1,8 @@
 #include "../include/MultiGreedyEvaluator.h"
+#include <map>
 
 
-
-void MultiGreedyEvaluator::getBestPosition(Board& b, const int& x, const int& y, const int& playerCode, int& score)
+void MultiGreedyEvaluator::getBestPosition(Board& b,  int& x,  int& y, const int& playerCode, int& score)
 {
 }
 
@@ -12,19 +12,29 @@ int MultiGreedyEvaluator::evaluate(Board& b, const int x, const int y, const int
 	return 0;
 }
 
-int MultiGreedyEvaluator::evaluateWithDeep(Board& b, const int x, const int y, const int playerCode, int nowDeep)
+void MultiGreedyEvaluator::getBestPosi_DeepSearch(Board& b, const int x, const int y, const int playerCode, int nowDeep)
 {
-	int opponentCode = playerCode == 1 ? 2 : 1;
-	int score = 0;
-	Position* plist; int psize;
-	plist=seva.getAvailablePosition(b, psize);
-
-
 	if (nowDeep < defaultSearchDeep)
 	{
-		score+=
+		//int opponentCode = playerCode == 1 ? 2 : 1;
+		int val = 0;
+		Position* plist; int psize;
+		plist = seva.getAvailablePosition(b, psize);
 
+		map<Position, int> pval;
 
+		for (int i = 0; i < psize; i++)
+		{
+			b.setPlayerCode(plist[i].x, plist[i].y, playerCode);
+
+			val = evaluateNodeValue(b, playerCode);
+			pval.insert(pair<Position,int>(plist[i],val));
+
+			b.setPlayerCode(plist[i].x, plist[i].y, 0);//ªπ‘≠∆Â≈Ã
+			
+		}
+
+		nowDeep++;
 	}
 }
 

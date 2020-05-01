@@ -109,7 +109,7 @@ void Panel::getInput(int& x, int& y,Board &b)
 		catch (exception& e)
 		{
 			clearLine(1);
-			cout << "非法输入。";
+			cout <<e.what()<< "非法输入。";
 			cin.clear();
 			while (cin.get() != '\n')
 				continue;

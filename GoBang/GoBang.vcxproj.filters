@@ -42,9 +42,6 @@
     <ClCompile Include="src\Evaluate\MultiGreedyEvaluator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Evaluate\Tree.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Include\Board.h">
@@ -72,9 +69,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\include\MultiGreedyEvaluator.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\include\Tree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
