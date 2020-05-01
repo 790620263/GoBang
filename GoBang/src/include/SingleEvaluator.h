@@ -1,4 +1,4 @@
-#ifndef SINGLEEVALUATOR_H
+﻿#ifndef SINGLEEVALUATOR_H
 #define SINGLEEVALUATOR_H
 #include "STD.h"
 #include "Evaluator.h"
@@ -18,13 +18,14 @@ class SingleEvaluator : public Evaluator
 			string right;
 			int score = 0;
 		};
+		//static const int  SCORE_V5 = 1000000000;
 		static const int  SCORE_V4 = 10000000;
 		static const int  SCORE_D4 = 1000000;
 		static const int  SCORE_V3 = 100000;
-		static const int  SCORE_V2 = 10000;
-		static const int  SCORE_D3 = 8000;
-		static const int  SCORE_D2 = 1000;
-		static const int  SCORE_OTHERS = 100;
+		static const int  SCORE_D3 = 10000;
+		static const int  SCORE_V2 = 1000;
+		static const int  SCORE_D2 = 100;
+		static const int  SCORE_OTHERS = 0;
 		static const int  PATTERN_NUM = 33;
 
 		//*为当前位置,0为空位,1为对方,2为我方
@@ -39,16 +40,16 @@ class SingleEvaluator : public Evaluator
 
 			  { "", "2220",SCORE_V3 },//_●●●_
 			  { "02", "220", SCORE_V3 },//_●_●●_
-			  { "", "20220", SCORE_V3 },
 			  { "02022", "", SCORE_V3 },
+			  { "", "20220", SCORE_V3 },
 
 			  { "", "*2221", SCORE_D3 },//_●●●○
-			  { "", "20221", SCORE_D3 },//_●_●●○
-			  { "02","221", SCORE_D3 },
+			   { "02","221", SCORE_D3 },//_●_●●○
+			  { "", "20221", SCORE_D3 },
 			  { "", "22021", SCORE_D3 },//_●●_●○
 			  { "022", "21", SCORE_D3 },
-			  { "2", "022", SCORE_D3 },//●_ _●●
-			  { "20", "22", SCORE_D3 },
+			  { "20", "22", SCORE_D3 },//●_ _●●
+			  { "2", "022", SCORE_D3 },
 			  { "2", "202", SCORE_D3 },//●_●_●
 
 			  { "0", "2200", SCORE_V2 },//_ _●●_ _

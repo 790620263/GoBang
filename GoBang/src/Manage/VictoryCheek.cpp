@@ -53,10 +53,11 @@ bool VictoryCheeker::have_five(Board &b, int x, int y, int playerCode)
 	}
 	return false;
 }
+//默认x,y是这位玩家下的
 int VictoryCheeker::how_many(Board &b,int x, int y, int playerCode,int xplus,int yplus)
 {
 	int score = 1;
-	for (int i = 0; i < 5; i++)
+	for (int i = 1; i < 5; i++)
 	{
 		x += xplus;
 		y += yplus;

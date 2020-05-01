@@ -20,37 +20,34 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
     //int leftLimit = 5; int rightLimit = 5;
 
     bool matchLeft = true,matchRight= true, matchNoPattern = true;
-    int code;
+    int code=0;
     int score = 0;
-    for (int axis = 0; axis < 8; axis++) {//@TODO:
-        //leftAvailable = 0;
-        //rightAvailable = 0;
-        //for (int i = 0; i < arrSize; i++)
-        //{
-        //    left[i] = b.getCodeOffsetPosi(x, y, axis, i);
-        //    leftAvailable++;
-        //}
+    for (int axis = 0; axis < 8; axis++) {
         matchNoPattern = true;
         for (int index = 0; index < PATTERN_NUM; index++)
         {
             Pattern p = patlist[index];
             matchLeft = true, matchRight = true;
 
+            if (x == 9 && y == 7 && p.right == "2200")
+            {
+                if (axis == 5)
+                    code = 0;
+            }
+
             //偏移量从1计数
+            //匹配左侧
             for (int i = 1; i <= p.left.size(); i++)
             {
+                code = b.getCodeOffsetPosi(x, y, axis, -i);
                 if (code != 0) code = code == playerCode ? 2 : 1;
-                code = code == playerCode ? 2 : 1;
                 if (p.left.at(p.left.size() - i) - 48 != code)//前者是char类型！
                 {
                     matchLeft = false;
                     break;
                 }
             }
-            if (x == 0 && y == 0 && p.right == "2200"&&axis==4)
-            {
-                code = 0;
-            }
+            //匹配右侧
             for (int i = 1; i <= p.right.size(); i++)
             {
                 code = b.getCodeOffsetPosi(x, y, axis, i);
@@ -61,14 +58,14 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
                     break;
                 }
             }
-            if (matchLeft) 
-                if (matchRight)
+            if (matchLeft&&matchRight)
                 {
                     score += p.score;
                     matchNoPattern = false;
                     break;
                 }
         }
+        //全都不匹配
         if (matchNoPattern) 
             score += SCORE_OTHERS;
    
@@ -108,7 +105,7 @@ void SingleEvaluator::getBestPosition(Board& b, int& x,int& y, const int& player
 
     }
     delete[] plist;
-    if (atkScore > defScore)
+    if (atkScore >= defScore)
     {
         score = atkScore; 
         x = atkp.x; y = atkp.y;
@@ -126,7 +123,7 @@ int SingleEvaluator::getScoreByChessNum(Board& b, int x, int y)
     for (int axis = 0; axis < 8; axis++)
     {
         int count = 0;
-        for (int i = 1; i < 6; i++)
+        for (int i = 1; i < 5; i++)
         {
             if (b.getCodeOffsetPosi(x, y, axis, i) >0)
             {
