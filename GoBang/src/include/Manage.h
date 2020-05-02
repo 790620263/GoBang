@@ -5,7 +5,8 @@
 #include "Panel.h"
 #include "Evaluator.h"
 #include "SingleEvaluator.h"
-#include "MultiGreedyEvaluator.h"
+//#include "MultiGreedyEvaluator.h"
+#include "DeepEvaluator.h"
 class Manager
 {
 public:
@@ -19,7 +20,7 @@ private:
 	Board b;
 	Panel panel;
 	SingleEvaluator eva;
-	MultiGreedyEvaluator meva;
+	DeepEvaluator deva;
 	//void init()
 	//{
 	//	PatternList::initPattern();

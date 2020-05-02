@@ -74,7 +74,7 @@ int Manager::ai_vs_ai()
 		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
 
 		//对黑棋使用深度搜索
-		meva.getBestPosition(b, x, y, Panel::BLACK, score);
+		deva.getBestPosition(b, x, y, Panel::BLACK, score);
 
 		winner = play(x, y, Panel::BLACK, score);
 

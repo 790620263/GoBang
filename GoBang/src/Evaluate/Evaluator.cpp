@@ -7,7 +7,7 @@ int Evaluator::evaluate(Board& b, const int x, const int y, const int playerCode
 {
 	return 0;
 }
-void Evaluator::getBestPosition(Board& b, const int& x, const int& y, const int& playerCode, int& score)
+void Evaluator::getBestPosition(Board& b, int& x, int& y, const int& playerCode, int& score)
 {
 }
 
@@ -29,21 +29,20 @@ Position* Evaluator::getAvailablePosition(Board& b,int &size)
 				for(int i=-1;i<2;i++)
 					for (int j = -1; j < 2; j++)
 					{
-						if (i != 0 || j != 0)
-						{
-							int tmpx = x + i, tmpy = y + j; 
-							bool notexist = true;
-							if (b.getPlayerCode(tmpx, tmpy) == 0) {
-								for (int k = 0; k < size; k++)
-								{
-									if (plist[k].x == tmpx && plist[k].y == tmpy) { notexist = false; break; }
-								}
-								if (notexist)
-								{
-									plist[size] = Position{ tmpx,tmpy };
-									size++;
-								}
+						int tmpx = x + i, tmpy = y + j; 
+						bool notexist = true;
+						if (b.getPlayerCode(tmpx, tmpy) == 0) {
+							for (int k = 0; k < size; k++)
+							{
+								if (plist[k].x == tmpx && plist[k].y == tmpy) 
+								{ notexist = false; break; }
 							}
+							if (notexist)
+							{
+								plist[size] = Position{ tmpx,tmpy };
+								size++;
+							}
+
 						}
 					}
 				

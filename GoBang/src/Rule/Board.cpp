@@ -4,7 +4,7 @@ bool Board::setPlayerCode(int x, int y, int playerCode)
 {
 	if (isInBoard(x, y)) {
 		board[x][y] = playerCode;
-		newX = x; newY = y;
+		//newX = x; newY = y;
 		return true;
 	}
 	return false;
@@ -16,10 +16,10 @@ int Board::getPlayerCode(int x, int y)
 		return this->board[x][y];
 	else return -1;
 }
-void Board::getNewPosition(int& x, int& y)
-{
-	x = newX; y = newY;
-}
+//void Board::getNewPosition(int& x, int& y)
+//{
+//	x = newX; y = newY;
+//}
 int Board::getSize() { return size; }
 
 /*返回（x,y)处沿axis方向偏移offset格的编号

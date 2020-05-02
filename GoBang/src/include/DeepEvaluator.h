@@ -7,18 +7,23 @@ class DeepEvaluator :Evaluator
 
 
 public:
-	int evaluate(Board& b, const int x, const int y, const int playerCode);
-	void getBestPosition(Board& b, const int& x, const int& y, const int& playerCode, int& score);
+	/*int evaluate(Board& b, const int x, const int y, const int playerCode);*/
+	void getBestPosition(Board& b, int& x, int& y, const int playerCode, int& score);
 
 private:
 	SingleEvaluator seva;
 
 	int aiCode = 2;//ºÚÆå
-	int getMin(Board& b, int deep);
-	int getMax(Board& b, int deep);
-	int evaluate_state(Board &b);
-	int evaluate_mixmax(Board &b, int deep, int onTurnPlayerCode);
+	const int defaultSearchDeep = 2;
 
+	int peoGo(Board& b, int deep);
+	int aiGo(Board& b, int deep);
+	int evaluate_state(Board &b);
+	int evaluate_minmax(Board &b, int deep);
+
+	void getBestPosi_DeepSearch(Board& b, int& x, int& y, int& score);
+
+	
 	
 };
 
