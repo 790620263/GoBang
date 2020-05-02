@@ -53,6 +53,12 @@ bool VictoryCheeker::have_five(Board &b, int x, int y, int playerCode)
 	}
 	return false;
 }
+bool VictoryCheeker::have_five(Board& b, int playerCode)
+{
+	int newX, newY;
+	b.getNewPosition(newX, newY);
+	return have_five(b,newX,newY,playerCode);
+}
 //默认x,y是这位玩家下的
 int VictoryCheeker::how_many(Board &b,int x, int y, int playerCode,int xplus,int yplus)
 {

@@ -6,14 +6,17 @@
 class MultiGreedyEvaluator :Evaluator
 {
 public:
-	int evaluate(Board& b, const int x, const int y, const int playerCode);
-	void getBestPosition(Board& b, int& x, int& y, const int& playerCode, int& score);
+	
+	void getBestPosition(Board& b, int& x, int& y, const int playerCode, int& score);
 	
 private:
-	const int defaultSearchDeep = 3;
+	const int defaultSearchDeep = 2;
+	int aiCode = 2;
 	SingleEvaluator seva;
-	void getBestPosi_DeepSearch(Board& b, const int x, const int y, const int playerCode,int nowDeep );
-	int evaluateNodeValue(Board& b,int playerCode);
+
+	void getBestPosi_DeepSearch(Board& b, int& x, int& y, int &score);
+	int fastEvaluate_state(Board& b, const int playerCode);//考虑playeCode=2的利益。黑棋2
+	int evaluate_state_tree(Board& b, int nowDeep, const int playerCode);
 };
 
 

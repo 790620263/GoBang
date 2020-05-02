@@ -1,8 +1,22 @@
 #include "../include/Manage.h"
-
+#include <iostream>
 int main()
 {
 	Manager m;
 	//m.ai_vs_peo();
-	m.ai_vs_ai();
+	int bwin = 0, wwin = 0, nowin = 0;
+	for (int i = 0; i < 1; i++)
+	{
+		int code= m.ai_vs_ai();
+		if (code == -1)
+		{
+			nowin++;
+		}
+		else if (code == 1)
+		{
+			wwin++;
+		}
+		else bwin++;
+	}
+	std::cout << "ºÚ" << bwin << "  °×" << wwin << "  Æ½" << nowin;
 }

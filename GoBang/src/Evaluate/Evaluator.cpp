@@ -10,6 +10,8 @@ int Evaluator::evaluate(Board& b, const int x, const int y, const int playerCode
 void Evaluator::getBestPosition(Board& b, const int& x, const int& y, const int& playerCode, int& score)
 {
 }
+
+//返回可行位置（（（（（（注意删除plist！！！！！））））
 Position* Evaluator::getAvailablePosition(Board& b,int &size)
 {
 	int boardSize = b.getSize();

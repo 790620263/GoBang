@@ -2,14 +2,15 @@
 #define _BOARD_H_
 class Board {
 private:
-	static const int DefaultSize =18;
+	static const int DefaultSize =15;
 	int size = DefaultSize;
-
+	int newX=0, newY=0;
 	int board[DefaultSize][DefaultSize] = { 0 };//x,y,存储的值表示该处子属于哪位玩家
 public:
 	Board();
 	//Board(int size);
 
+	void getNewPosition(int& x, int& y);
 	int getSize();
 	bool setPlayerCode(int x, int y, int playerCode);
 	int getPlayerCode(int x, int y);

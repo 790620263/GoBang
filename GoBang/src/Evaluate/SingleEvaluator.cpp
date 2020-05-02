@@ -1,5 +1,6 @@
 ﻿#include "../include/SingleEvaluator.h"
 #include "../include/Board.h"
+#include "../include/VictoryCheeker.h"
 #include <iostream>
 
 SingleEvaluator::SingleEvaluator()
@@ -11,9 +12,15 @@ SingleEvaluator::~SingleEvaluator()
 {
     //dtor
 }
+
+
+
+//核心
+//评估器，返回代号为playerCode的玩家在该点处的评分（不考虑对手）
 int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int playerCode)
 {
     if (b.getPlayerCode(x, y) != 0)return -100000000;
+    if(VictoryCheeker::have_five(b,x,y,playerCode))return 100000000;//5个子
     
     bool matchLeft = true,matchRight= true;
     int code = 0; int score = 0;
@@ -92,6 +99,16 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
     return score;
 }
 
+
+
+
+
+
+
+
+
+
+//兼顾防守，进攻
 void SingleEvaluator::getBestPosition(Board& b, int& x,int& y, const int& playerCode, int& score)
 {
     int psize = 0;

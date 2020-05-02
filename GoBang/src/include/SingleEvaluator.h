@@ -9,6 +9,7 @@ class SingleEvaluator : public Evaluator
     public:
         SingleEvaluator();
         virtual ~SingleEvaluator();
+		//返回代号为playerCode的玩家在该点处的评分（不考虑对手）
         int evaluate(Board& b, const int x, const int y, const int playerCode);
         void getBestPosition(Board& b, int& x, int& y,const int& playerCode, int& score);
     protected:

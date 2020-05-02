@@ -4,6 +4,7 @@ bool Board::setPlayerCode(int x, int y, int playerCode)
 {
 	if (isInBoard(x, y)) {
 		board[x][y] = playerCode;
+		newX = x; newY = y;
 		return true;
 	}
 	return false;
@@ -14,6 +15,10 @@ int Board::getPlayerCode(int x, int y)
 	if (isInBoard(x, y))
 		return this->board[x][y];
 	else return -1;
+}
+void Board::getNewPosition(int& x, int& y)
+{
+	x = newX; y = newY;
 }
 int Board::getSize() { return size; }
 

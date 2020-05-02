@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Evaluate\DeepEvaluator.cpp" />
     <ClCompile Include="src\Evaluate\MultiGreedyEvaluator.cpp" />
     <ClCompile Include="src\Manage\Manage.cpp" />
     <ClCompile Include="src\UI\Panel.cpp" />
@@ -30,6 +31,7 @@
     <ClCompile Include="src\Test\MainTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\include\DeepEvaluator.h" />
     <ClInclude Include="src\include\MultiGreedyEvaluator.h" />
     <ClInclude Include="src\include\Manage.h" />
     <ClInclude Include="src\Include\Panel.h" />

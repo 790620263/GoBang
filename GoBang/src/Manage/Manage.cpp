@@ -10,7 +10,7 @@ Manager::~Manager()
 {
 	//delete &b;
 }
-//返回胜利者编号,-1表示平局
+//返回胜利者编号,-1表示平局,0表示未结束
 int Manager::play(int x, int y, int playCode,int score)
 {
 	b.setPlayerCode(x, y, playCode);
@@ -40,7 +40,7 @@ int Manager::play(int x, int y, int playCode,int score)
 	}
 
 	//Sleep(1000);
-	return false;
+	return 0;
 }
 
 int Manager::ai_vs_peo()
@@ -71,11 +71,16 @@ int Manager::ai_vs_ai()
 	//默认白棋先手
 	while (winner == 0)
 	{
-		eva.getBestPosition(b, x, y, Panel::BLACK, score);
+		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
+
+		//对黑棋使用深度搜索
+		meva.getBestPosition(b, x, y, Panel::BLACK, score);
+
 		winner = play(x, y, Panel::BLACK, score);
 
 		if (winner != 0)break;
 
+		//单层搜索
 		eva.getBestPosition(b, x, y, Panel::WHITE, score);
 		winner = play(x, y, Panel::WHITE, score);
 	}

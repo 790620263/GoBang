@@ -9,6 +9,7 @@ public:
 	static bool isFull(Board &b);
 	static bool isVictory(Board &b, int playerCode);
 	static bool have_five(Board &b, int x, int y, int playerCode);
+	static bool have_five(Board& b, int playerCode);
 private:
 	static int how_many(Board &b, int x, int y, int playerCode, int xplus, int yplus);
 };
