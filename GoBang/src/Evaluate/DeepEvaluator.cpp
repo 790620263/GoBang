@@ -2,7 +2,7 @@
 #include "../include/STD.h"
 #include <iostream>
 //该层玩家走子,一定不能在该层结束
-int DeepEvaluator::peoGo(Board& b, int deep)
+int DeepEvaluator::peoGo(Board& b, int deep,int big)
 {
 	if (deep <= 0)
 		cout << "ERROR  END IN PEOGO" << endl;
@@ -23,10 +23,10 @@ int DeepEvaluator::peoGo(Board& b, int deep)
 
 		val = aiGo(b, deep - 1);
 
-		if(val)
-
 		//unMakeMove
 		b.setPlayerCode(plist[i].x, plist[i].y, 0);
+
+		if (val <= big)return -INFINITY_INT;
 
 		best = max(val, best);
 	}
@@ -53,7 +53,7 @@ int DeepEvaluator::aiGo(Board &b,int deep)
 		//makeNextMove
 		b.setPlayerCode(plist[i].x, plist[i].y, aiCode);
 
-		val = peoGo(b, deep - 1);
+		val = peoGo(b, deep - 1,best);
 
 		//unMakeMove
 		b.setPlayerCode(plist[i].x, plist[i].y, 0);
