@@ -76,13 +76,11 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
 
     int matched[SingleEvaluator::SCORE_NUM] = { 0 }; //matched 0,1,2,3...依次对应不匹配，死2，活2，死3...
 
-
-    
        
 
-        for (int axis = 0; axis < 8; axis++) {
-            for (int index = 0; index < PATTERN_NUM; index++)
-            {
+    for (int axis = 0; axis < 8; axis++) {
+        for (int index = 0; index < PATTERN_NUM; index++)
+        {
 
             const Pattern& p = patlist[index];//必须用引用，否则构造析构会显著增加CPU负载
             int leftsize = strlen(p.left);
@@ -93,7 +91,7 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
 
             //偏移量从1计数
             //匹配左侧
-            for (int i = 1; i <=leftsize; i++)
+            for (int i = 1; i <= leftsize; i++)
             {
                 code = b.getCodeOffsetPosi(x, y, axis, -i);
                 if (code != 0) code = code == playerCode ? 2 : 1;
@@ -128,7 +126,7 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
     if (matched[SCORE_D4] > 1 || matched[SCORE_V3] > 0 && matched[SCORE_D4] > 0)
         score = score + 8192;
 
-    score=score+matched[SCORE_D4] << 9;//死4 512
+    score=score+matched[SCORE_D4] << 11;//死4 2048
 
     //活2死3、双活2、双死3不拦必输(等同活3）
     if (matched[SCORE_D3] > 0 && matched[SCORE_V3] > 0|| matched[SCORE_V2] > 1 || matched[SCORE_V3] > 1)
