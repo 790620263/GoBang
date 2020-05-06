@@ -39,7 +39,7 @@ void Panel::drawBoard(Board &b,int newX,int newY) {
 				case 0:
 					cout << '+';
 					break;
-				case WHITE:
+				case Board::WHITE:
 					if (x == newX && y == newY)
 						cout << "¡î";
 					else 

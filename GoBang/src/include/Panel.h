@@ -8,8 +8,6 @@ private:
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); // 获取标准输出设备句柄
 public:
     Panel();
-    const static int WHITE = 1;
-    const static int BLACK = 2;
 
     void setColor(int background, int foreground);
 

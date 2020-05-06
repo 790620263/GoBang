@@ -7,6 +7,9 @@ private:
 	//int newX=0, newY=0;
 	int board[DefaultSize][DefaultSize] = { 0 };//x,y,存储的值表示该处子属于哪位玩家
 public:
+	const static int WHITE = 1;
+	const static int BLACK = 2;
+
 	Board();
 	//Board(int size);
 

@@ -26,7 +26,7 @@ int Manager::play(int x, int y, int playCode,int score)
 	{
 		if (VictoryCheeker::have_five(b, x, y, playCode))
 		{//编号为playerCode的获胜
-			if (playCode == Panel::BLACK)
+			if (playCode == Board::BLACK)
 			{
 				panel.printMsg("黑棋获胜");
 			}
@@ -51,13 +51,13 @@ int Manager::ai_vs_peo()
 	while (winner==0)
 	{
 		panel.getInput(x, y, b);
-		winner=play(x, y, Panel::WHITE, score);
+		winner=play(x, y, Board::WHITE, score);
 		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
 
 		if (winner!=0)break;
 
-		eva.getBestPosition(b, x, y, Panel::BLACK, score);
-		play(x, y, Panel::BLACK, score);
+		eva.getBestPosition(b, x, y, Board::BLACK, score);
+		play(x, y, Board::BLACK, score);
 	}
 	return winner;
 }
@@ -67,22 +67,22 @@ int Manager::ai_vs_ai()
 	int winner = 0;
 	int x=b.getSize()/2, y=b.getSize()/2, score = 0;
 
-	winner= play(x, y, Panel::WHITE,score);
+	winner= play(x, y, Board::WHITE,score);
 	//默认白棋先手
 	while (winner == 0)
 	{
 		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
 
 		//对黑棋使用深度搜索
-		deva.getBestPosition(b, x, y, Panel::BLACK, score);
+		deva.getBestPosition(b, x, y, Board::BLACK, score);
 
-		winner = play(x, y, Panel::BLACK, score);
+		winner = play(x, y, Board::BLACK, score);
 
 		if (winner != 0)break;
 
 		//单层搜索
-		eva.getBestPosition(b, x, y, Panel::WHITE, score);
-		winner = play(x, y, Panel::WHITE, score);
+		eva.getBestPosition(b, x, y, Board::WHITE, score);
+		winner = play(x, y, Board::WHITE, score);
 	}
 	return winner;
 }
