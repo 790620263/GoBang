@@ -16,17 +16,17 @@ int Board::getPlayerCode(int x, int y)
 		return this->board[x][y];
 	else return -1;
 }
-//void Board::getNewPosition(int& x, int& y)
-//{
-//	x = newX; y = newY;
-//}
+void Board::getNewPosition(int& x, int& y)
+{
+	x = newX; y = newY;
+}
 int Board::getSize() { return size; }
 
 /*返回（x,y)处沿axis方向偏移offset格的编号
 如果超出棋盘，返回-1*/
 int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 {
-	int i, j;//i:x轴偏移量，j、：y轴偏移量
+	int i=0, j=0;//i:x轴偏移量，j、：y轴偏移量
 	switch (axis)
 	{
 	case 0:

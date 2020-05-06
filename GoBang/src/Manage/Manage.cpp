@@ -56,7 +56,8 @@ int Manager::ai_vs_peo()
 
 		if (winner!=0)break;
 
-		eva.getBestPosition(b, x, y, Board::BLACK, score);
+		//eva.getBestPosition(b, x, y, Board::BLACK, score);
+		deva.getBestPosition(b, x, y, Board::BLACK, score);
 		play(x, y, Board::BLACK, score);
 	}
 	return winner;
@@ -71,7 +72,7 @@ int Manager::ai_vs_ai()
 	//默认白棋先手
 	while (winner == 0)
 	{
-		//eva.getBestPosition(b, x, y, Panel::BLACK, score);
+		//eva.getBestPosition(b, x, y, Board::BLACK, score);
 
 		//对黑棋使用深度搜索
 		deva.getBestPosition(b, x, y, Board::BLACK, score);

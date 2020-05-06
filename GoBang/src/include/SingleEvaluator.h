@@ -29,7 +29,7 @@ class SingleEvaluator : public Evaluator
 		static const int  SCORE_OTHERS = 0;
 
 		static const int SCORE_NUM = 7;
-		static const int  PATTERN_NUM = 37;
+		static const int  PATTERN_NUM = 38;
 
 		//*为当前位置,0为空位,1为对方,2为我方
 		//此列表中，自上而下匹配优先级递减
@@ -41,7 +41,8 @@ class SingleEvaluator : public Evaluator
 			  { "2", "222", SCORE_D4 },//●_●●●
 			  { "22", "22", SCORE_D4 },// ●●_●●
 
-			  { "", "2220",SCORE_V3 },//_●●●_
+			  { "0", "2220",SCORE_V3 },//_●●●_
+			  { "", "2220",SCORE_V3 },
 			  { "02", "220", SCORE_V3 },//_●_●●_
 			  { "02022", "", SCORE_V3 },
 			  { "", "20220", SCORE_V3 },

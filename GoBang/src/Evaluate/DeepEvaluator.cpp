@@ -1,9 +1,8 @@
 #include "../include/DeepEvaluator.h"
 #include "../include/STD.h"
+#include "../include/VictoryCheeker.h"
 #include <iostream>
-//该层玩家走子,一定不能在该层结束
-int DeepEvaluator::peoGo(Board& b, int deep,int big)
-{
+/*
 	if (deep <= 0)
 		cout << "ERROR  END IN PEOGO" << endl;
 
@@ -33,15 +32,51 @@ int DeepEvaluator::peoGo(Board& b, int deep,int big)
 	delete[] plist;
 
 	return best;
+*/
+
+//选择最小值
+int DeepEvaluator::peoGo(Board& b, int deep, int big, int min)
+{
+	int opponentCode = aiCode == 2 ? 1 : 2;
+	isOver = VictoryCheeker::have_five(b, opponentCode);
+	if (deep <= 0||isOver)
+		return evaluate_state(b);
+	
+
+	int best = INT_MAX; int val;
+
+	//generateLegalMove
+	int psize;
+	Position* plist = Evaluator::getAvailablePosition(b, psize);
+
+	//whileMovesLeft
+	for (int i = 0; i < psize; i++)
+	{
+		//makeNextMove
+		b.setPlayerCode(plist[i].x, plist[i].y, opponentCode);
+
+		val = aiGo(b, deep - 1,big,best);//big
+
+		//unMakeMove
+		b.setPlayerCode(plist[i].x, plist[i].y, 0);
+
+		if (val < big)return big;
+
+		best = min(val, best);
+	}
+	delete[] plist;
+
+	return best;
 }
 
 //该层AI走子
-int DeepEvaluator::aiGo(Board &b,int deep)
+int DeepEvaluator::aiGo(Board &b,int deep, int big, int min)
 {
-	if (deep <= 0)
+	isOver = VictoryCheeker::have_five(b, aiCode);
+	if (deep <= 0 || isOver)
 		return evaluate_state(b);
 
-	int best = -INFINITY_INT; int val;
+	int best = INT_MIN; int val;
 
 	//generateLegalMove
 	int psize;
@@ -53,11 +88,12 @@ int DeepEvaluator::aiGo(Board &b,int deep)
 		//makeNextMove
 		b.setPlayerCode(plist[i].x, plist[i].y, aiCode);
 
-		val = peoGo(b, deep - 1,best);
+		val = peoGo(b, deep - 1,best,min);//min
 
 		//unMakeMove
 		b.setPlayerCode(plist[i].x, plist[i].y, 0);
 
+		if (val > min)return min;
 		best = max(val, best);
 	}
 	delete[] plist;
@@ -95,31 +131,33 @@ int DeepEvaluator::evaluate_state(Board& b)
 	return -oppoScore+myScore;
 }
 //评价局面，前瞻deep步
-int DeepEvaluator::evaluate_minmax(Board& b, int deep)
-{
-	//轮到AI
-	return aiGo(b, deep);
-}
+//int DeepEvaluator::evaluate_minmax(Board& b, int deep)
+//{
+//	//轮到AI
+//	return aiGo(b, deep);
+//}
 
 void DeepEvaluator ::getBestPosi_DeepSearch(Board& b, int& x, int& y, int& score)
 {
 	int psize;
 	Position* plist = Evaluator::getAvailablePosition(b, psize);
 	x = plist[0].x; y = plist[0].y;//先初始化一下
+
+	int tmpScore = INT_MIN;
 	for (int i = 0; i < psize; i++)
 	{
 
 		//makeNextMove
-		//b.setPlayerCode(plist[i].x, plist[i].y, aiCode);
-		int s = evaluate_minmax(b, defaultSearchDeep);
-		//int s = evaluate_state(b);
+		b.setPlayerCode(plist[i].x, plist[i].y, aiCode);
 
-		//b.setPlayerCode(plist[i].x, plist[i].y, 0);
+		tmpScore = peoGo(b, defaultSearchDeep, INT_MIN, INT_MAX);
+
+		b.setPlayerCode(plist[i].x, plist[i].y, 0);
 
 
-		if (score < s)
+		if (score < tmpScore)
 		{
-			score =s;
+			score =tmpScore;
 			x = plist[i].x; y = plist[i].y;
 		}
 	}

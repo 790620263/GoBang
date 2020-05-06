@@ -52,7 +52,7 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
                 }
             }
             //匹配右侧
-            for (int i = 1; i <= p.right.size(); i++)
+            for (unsigned int i = 1; i <= p.right.size(); i++)
             {
                 code = b.getCodeOffsetPosi(x, y,axis, i);
                if(code!=0) code = code == playerCode ? 2 : 1;

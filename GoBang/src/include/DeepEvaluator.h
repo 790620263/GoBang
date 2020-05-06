@@ -15,9 +15,10 @@ private:
 
 	int aiCode = 2;//ºÚÆå
 	const int defaultSearchDeep = 2;
+	bool isOver = false;
 
-	int peoGo(Board& b, int deep,int big);
-	int aiGo(Board& b, int deep);
+	int peoGo(Board& b, int deep,int big,int min);
+	int aiGo(Board& b, int deep, int big, int min);
 	int evaluate_state(Board &b);
 	int evaluate_minmax(Board &b, int deep);
 
