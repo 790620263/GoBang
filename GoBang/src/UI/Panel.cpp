@@ -13,7 +13,7 @@ Panel::Panel()
 void Panel::setColor(int background, int foreground)
 {
 	//WORD wr1 = 0xf0;//定义颜色属性；第一位为背景色，第二位为前景色
-	WORD wr1 = background << 4 + foreground;
+	WORD wr1 = (background << 4) + foreground;
 	SetConsoleTextAttribute(hOut, wr1);
 }
 
