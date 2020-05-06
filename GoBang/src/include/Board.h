@@ -6,6 +6,9 @@ private:
 	int size = DefaultSize;
 	int newX=0, newY=0;
 	int board[DefaultSize][DefaultSize] = { 0 };//x,y,存储的值表示该处子属于哪位玩家
+
+	const static int axisX[8];
+	const static int axisY[8];
 public:
 	const static int WHITE = 1;
 	const static int BLACK = 2;

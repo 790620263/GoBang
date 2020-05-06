@@ -25,9 +25,9 @@ Position* Evaluator::getAvailablePosition(Board& b,int &size)
 		{
 			int code = b.getPlayerCode(x, y);
 			if (code != 0)
-			{//周围3*3可行
-				for(int i=-1;i<2;i++)
-					for (int j = -1; j < 2; j++)
+			{//周围5*5可行
+				for(int i=-2;i<3;i++)
+					for (int j = -2; j < 3; j++)
 					{
 						int tmpx = x + i, tmpy = y + j; 
 						bool notexist = true;
