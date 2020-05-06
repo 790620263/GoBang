@@ -129,7 +129,7 @@ int DeepEvaluator::evaluate_state(Board& b)
 	//std::cout <<(*plist).x<<"\t"<< (*plist).y<< "\tMYSCORE\t" << myScore << "\tOppoScore\t" << oppoScore<<std::endl;
 
 	delete[] plist;
-	return myScore-oppoScore<<1;
+	return myScore-oppoScore;
 }
 //评价局面，前瞻deep步
 //int DeepEvaluator::evaluate_minmax(Board& b, int deep)
