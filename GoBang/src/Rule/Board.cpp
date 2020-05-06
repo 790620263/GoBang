@@ -67,14 +67,14 @@ int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 	}
 	x += i * offset;
 	y += j * offset;
-	if (x >= 0 && x < this->size && y >= 0 && y < this->size)
-	{//如果（x，y）在棋盘内
+	//if (x >= 0 && x < this->size && y >= 0 && y < this->size)
+	//{//如果（x，y）在棋盘内
 		return board[x][y];
-	}
-	else
-	{//越界
-		return -1;
-	}
+	//}
+	//else
+	//{//越界
+	//	return -1;
+	//}
 }
 
 bool Board::isInBoard(int x, int y)

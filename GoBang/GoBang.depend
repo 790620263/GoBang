@@ -1,0 +1,75 @@
+# depslib dependency file v1.0
+1588416440 source:d:\workspace\c\gobang\gobang\src\evaluate\evaluator.cpp
+	"../include/Evaluator.h"
+	<cstdlib>
+	<ctime>
+
+1588414475 d:\workspace\c\gobang\gobang\src\include\evaluator.h
+	"Board.h"
+	"Position.h"
+
+1588760453 d:\workspace\c\gobang\gobang\src\include\board.h
+
+1588265443 d:\workspace\c\gobang\gobang\src\include\position.h
+
+1588764750 source:d:\workspace\c\gobang\gobang\src\manage\manage.cpp
+	"../include/Manage.h"
+	<iostream>
+
+1588764859 d:\workspace\c\gobang\gobang\src\include\manage.h
+	"Board.h"
+	"VictoryCheeker.h"
+	"Panel.h"
+	"Evaluator.h"
+	"SingleEvaluator.h"
+	"DeepEvaluator.h"
+
+1588760462 d:\workspace\c\gobang\gobang\src\include\victorycheeker.h
+	"Board.h"
+
+1588757955 d:\workspace\c\gobang\gobang\src\include\panel.h
+	"Board.h"
+	"STD.h"
+
+1588258596 d:\workspace\c\gobang\gobang\src\include\std.h
+	<string>
+	<Windows.h>
+	<vector>
+
+1588764016 d:\workspace\c\gobang\gobang\src\include\singleevaluator.h
+	"Evaluator.h"
+
+1588762336 d:\workspace\c\gobang\gobang\src\include\deepevaluator.h
+	"SingleEvaluator.h"
+
+1588760473 source:d:\workspace\c\gobang\gobang\src\manage\victorycheek.cpp
+	"../include/VictoryCheeker.h"
+
+1588764417 source:d:\workspace\c\gobang\gobang\src\rule\board.cpp
+	"../include/Board.h"
+	<iostream>
+
+1588765023 source:d:\workspace\c\gobang\gobang\src\test\maintest.cpp
+	"../include/Manage.h"
+	<iostream>
+
+1588757955 source:d:\workspace\c\gobang\gobang\src\ui\panel.cpp
+	"../include/Panel.h"
+	<iostream>
+	<iomanip>
+	<sstream>
+
+1588765945 source:d:\workspace\c\gobang\gobang\src\evaluate\singleevaluator.cpp
+	"../include/Board.h"
+	"../include/VictoryCheeker.h"
+	<cstring>
+	<iostream>
+	<climits>
+
+1588766113 source:d:\workspace\c\gobang\gobang\src\evaluate\deepevaluator.cpp
+	"../include/DeepEvaluator.h"
+	"../include/STD.h"
+	"../include/VictoryCheeker.h"
+	<iostream>
+	<climits>
+

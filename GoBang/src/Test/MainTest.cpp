@@ -5,7 +5,7 @@ int main()
 	Manager m;
 	//m.ai_vs_peo();
 	int bwin = 0, wwin = 0, nowin = 0;
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		int code= m.ai_vs_ai();
 		if (code == -1)
@@ -17,6 +17,8 @@ int main()
 			wwin++;
 		}
 		else bwin++;
+
+		m.resetBoard();
 	}
 	std::cout << "ºÚ" << bwin << "  °×" << wwin << "  Æ½" << nowin;
 }

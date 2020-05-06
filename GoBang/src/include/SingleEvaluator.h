@@ -1,6 +1,5 @@
 ﻿#ifndef SINGLEEVALUATOR_H
 #define SINGLEEVALUATOR_H
-#include "STD.h"
 #include "Evaluator.h"
 
 
@@ -15,8 +14,8 @@ class SingleEvaluator : public Evaluator
     protected:
 		struct Pattern
 		{
-			string left;
-			string right;
+			const char* left;
+			const char* right;
 			int score = 0;
 		};
 		//static const int  SCORE_V5 = 1000000000;

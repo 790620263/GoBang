@@ -2,6 +2,7 @@
 #include "../include/STD.h"
 #include "../include/VictoryCheeker.h"
 #include <iostream>
+#include <climits>
 /*
 	if (deep <= 0)
 		cout << "ERROR  END IN PEOGO" << endl;
@@ -41,7 +42,7 @@ int DeepEvaluator::peoGo(Board& b, int deep, int big, int min)
 	isOver = VictoryCheeker::have_five(b, opponentCode);
 	if (deep <= 0||isOver)
 		return evaluate_state(b);
-	
+
 
 	int best = INT_MAX; int val;
 
@@ -108,7 +109,7 @@ int DeepEvaluator::evaluate_state(Board& b)
 	Position* plist = Evaluator::getAvailablePosition(b, psize);
 
 
-	
+
 	int opponentCode = aiCode == 2 ? 1 : 2;
 
 	for (int i = 0; i < psize; i++)
@@ -117,18 +118,18 @@ int DeepEvaluator::evaluate_state(Board& b)
 			//先简单封装一下singleEvaluator的eva方法，以后再写快速匹配
 		//以对方威胁程度给分，保守型AI
 		oppoScore =oppoScore+ seva.evaluate(b, plist[i].x, plist[i].y, opponentCode);
-		
+
 
 		seva.evaluate(b, plist[i].x, plist[i].y, aiCode); //以己方优势程度给分，进攻型AI
 		myScore = myScore+seva.evaluate(b, plist[i].x, plist[i].y, aiCode);
 
 		/*std::cout << "MYSCORE\t" << myScore << "\tOppoScore\t" << oppoScore<<std::endl;*/
 	}
-	
+
 	//std::cout <<(*plist).x<<"\t"<< (*plist).y<< "\tMYSCORE\t" << myScore << "\tOppoScore\t" << oppoScore<<std::endl;
-	
+
 	delete[] plist;
-	return -oppoScore+myScore;
+	return myScore-oppoScore<<1;
 }
 //评价局面，前瞻deep步
 //int DeepEvaluator::evaluate_minmax(Board& b, int deep)
@@ -143,7 +144,7 @@ void DeepEvaluator ::getBestPosi_DeepSearch(Board& b, int& x, int& y, int& score
 	Position* plist = Evaluator::getAvailablePosition(b, psize);
 	x = plist[0].x; y = plist[0].y;//先初始化一下
 
-	int tmpScore = INT_MIN;
+	int tmpScore = INT_MAX;
 	for (int i = 0; i < psize; i++)
 	{
 

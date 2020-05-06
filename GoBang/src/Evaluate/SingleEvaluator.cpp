@@ -1,11 +1,13 @@
 ﻿#include "../include/SingleEvaluator.h"
 #include "../include/Board.h"
 #include "../include/VictoryCheeker.h"
+#include <cstring>
 #include <iostream>
+#include <climits>
 
 SingleEvaluator::SingleEvaluator()
 {
-   
+
 }
 
 SingleEvaluator::~SingleEvaluator()
@@ -13,31 +15,22 @@ SingleEvaluator::~SingleEvaluator()
     //dtor
 }
 
-
-
-//核心
-//评估器，返回代号为playerCode的玩家在该点处的评分（不考虑对手）
+/*备份
 int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int playerCode)
 {
-    if (b.getPlayerCode(x, y) != 0)return -100000000;
-    if(VictoryCheeker::have_five(b,x,y,playerCode))return 100000000;//5个子
-    
+    if (b.getPlayerCode(x, y) != 0)return INT_MIN;
+    if(VictoryCheeker::have_five(b,x,y,playerCode))return INT_MAX;//5个子
+
     bool matchLeft = true,matchRight= true;
     int code = 0; int score = 0;
 
     int matched[SingleEvaluator::SCORE_NUM] = { 0 }; //matched 0,1,2,3...依次对应不匹配，死2，活2，死3...
-   
+
     for (int axis = 0; axis < 8;axis++) {
         for (int index = 0; index < PATTERN_NUM; index++)
         {
             const Pattern &p = patlist[index];//必须用引用，否则构造析构会显著增加CPU负载
             matchLeft = true, matchRight = true;
-
-            //if (x == 9 && y == 7 && p.right == "2200")
-            //{
-            //    if (axisList[index] == 5)
-            //        code = 0;
-            //}
 
             //偏移量从1计数
             //匹配左侧
@@ -69,9 +62,64 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
                 }
         }
     }
+*/
+
+//核心
+//快速评估器，返回代号为playerCode的玩家在该点处的评分（不考虑对手）
+int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int playerCode)
+{
+    if (b.getPlayerCode(x, y) != 0)return INT_MIN;
+    if(VictoryCheeker::have_five(b,x,y,playerCode))return INT_MAX;//5个子
+
+    bool matchLeft = true,matchRight= true;
+    int code = 0; int score = 0;
+
+    int matched[SingleEvaluator::SCORE_NUM] = { 0 }; //matched 0,1,2,3...依次对应不匹配，死2，活2，死3...
+
+
+    for (int index = 0; index < PATTERN_NUM; index++)
+    {
+        const Pattern& p = patlist[index];//必须用引用，否则构造析构会显著增加CPU负载
+        int leftsize = strlen(p.left);
+        int rightsize = strlen(p.right);
+
+        for (int axis = 0; axis < 8; axis++) {
+
+            matchLeft = true, matchRight = true;
+
+            //偏移量从1计数
+            //匹配左侧
+            for (int i = 1; i <=leftsize; i++)
+            {
+                code = b.getCodeOffsetPosi(x, y, axis, -i);
+                if (code != 0) code = code == playerCode ? 2 : 1;
+                if (p.left[leftsize - i] - 48 != code)//前者是char类型！
+                {
+                    matchLeft = false;
+                    break;
+                }
+            }
+            //匹配右侧
+            for (unsigned int i = 1; i <= rightsize; i++)
+            {
+                code = b.getCodeOffsetPosi(x, y, axis, i);
+                if (code != 0) code = code == playerCode ? 2 : 1;
+                if (p.right[i - 1] - 48 != code)//前者是char类型！
+                {
+                    matchRight = false;
+                    break;
+                }
+            }
+            if (matchLeft && matchRight)
+            {
+                matched[p.score]++;
+                //break;
+            }
+        }
+    }
 
     //匹配情况
-    //活4，双死4，死4活3  
+    //活4，双死4，死4活3
     score += matched[SCORE_V4] << 13;
     if (matched[SCORE_D4] > 1 || matched[SCORE_V3] > 0 && matched[SCORE_D4] > 0)
         score += 8192;
@@ -85,15 +133,15 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
     }
     if (matched[SCORE_V3] > 0 && matched[SCORE_D3] > 0)
         score += 512;
-    //活3  
+    //活3
     score += matched[SCORE_V3] << 10;
-    
-    //死3 
-    score += matched[SCORE_D3] << 6;
+
+    //死3
+    score =score+ 1 + matched[SCORE_D3] << 7;
     //活2
-    score+= 1+matched[SCORE_V3] << 6;
+    score+= matched[SCORE_V3] << 7;
     //死2
-    score += matched[SCORE_D2] << 4;
+    score += matched[SCORE_D2] << 2;
 
 
     return score;
@@ -143,7 +191,7 @@ void SingleEvaluator::getBestPosition(Board& b, int& x,int& y, const int& player
     delete[] plist;
     if (atkScore >= defScore)
     {
-        score = atkScore; 
+        score = atkScore;
         x = atkp.x; y = atkp.y;
     }
     else

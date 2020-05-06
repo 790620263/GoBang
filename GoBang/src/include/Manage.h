@@ -16,6 +16,10 @@ public:
 	int play(int x, int y, int playCode,int score);
 	int ai_vs_peo();
 	int ai_vs_ai();
+	void resetBoard() {
+		//delete &b;
+		b = *(new Board());
+	};
 private:
 	Board b;
 	Panel panel;

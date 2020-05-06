@@ -2,7 +2,7 @@
 #include <iostream>
 Manager::Manager()
 {
-	//b = *(new Board());
+	b = *(new Board());
 	panel.drawBoard(b);
 }
 
