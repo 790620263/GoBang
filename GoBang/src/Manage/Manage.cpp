@@ -56,8 +56,8 @@ int Manager::ai_vs_peo()
 
 		if (winner!=0)break;
 
-		//eva.getBestPosition(b, x, y, Board::BLACK, score);
-		deva.getBestPosition(b, x, y, Board::BLACK, score);
+		eva.getBestPosition(b, x, y, Board::BLACK, score);
+		//deva.getBestPosition(b, x, y, Board::BLACK, score);
 		play(x, y, Board::BLACK, score);
 	}
 	return winner;
