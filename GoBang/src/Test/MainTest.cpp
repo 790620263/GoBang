@@ -19,5 +19,5 @@ int main()
 		else bwin++;
 			m.resetBoard();
 	}
-	std::cout << "ºÚ" << bwin << "  °×" << wwin << "  Æ½" << nowin;
+	std::cout << "ï¿½ï¿½" << bwin << "  ï¿½ï¿½" << wwin << "  Æ½" << nowin;
 }
