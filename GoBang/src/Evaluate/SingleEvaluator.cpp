@@ -66,7 +66,6 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
 
 //核心
 //快速评估器，返回代号为playerCode的玩家在该点处的评分（不考虑对手）
-
 int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int playerCode)
 {
     if (b.getPlayerCode(x, y) != 0)return INT_MIN;
@@ -78,14 +77,15 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
     int matched[SingleEvaluator::SCORE_NUM] = { 0 }; //matched 0,1,2,3...依次对应不匹配，死2，活2，死3...
 
        
-    for (int index = 0; index < PATTERN_NUM; index++)
-    {
 
-        const Pattern& p = patlist[index];//必须用引用，否则构造析构会显著增加CPU负载
-        int leftsize = strlen(p.left);
-        int rightsize = strlen(p.right);
+    for (int axis = 0; axis < 8; axis++) {
+        for (int index = 0; index < PATTERN_NUM; index++)
+        {
 
-        for (int axis = 0; axis < 8; axis++) {
+            const Pattern& p = patlist[index];//必须用引用，否则构造析构会显著增加CPU负载
+            int leftsize = strlen(p.left);
+            int rightsize = strlen(p.right);
+
 
             matchLeft = true, matchRight = true;
 
@@ -121,29 +121,30 @@ int SingleEvaluator::evaluate(Board& b, const int x, const int y, const int play
     }
 
     //匹配情况
-     //活4，双死4，死4活3  
+    //活4，双死4，死4活3
     score += matched[SCORE_V4] << 13;
     if (matched[SCORE_D4] > 1 || matched[SCORE_V3] > 0 && matched[SCORE_D4] > 0)
-        score += 8192;
+        score = score + 8192;
 
-    score += matched[SCORE_D4] << 12;//死4 2048
+    score=score+matched[SCORE_D4] << 11;//死4 2048
 
     //活2死3、双活2、双死3不拦必输(等同活3）
-    if (matched[SCORE_D3] > 0 && matched[SCORE_V3] > 0 || matched[SCORE_V2] > 1 || matched[SCORE_V3] > 1)
+    if (matched[SCORE_D3] > 0 && matched[SCORE_V3] > 0|| matched[SCORE_V2] > 1 || matched[SCORE_V3] > 1)
     {
-        score += 1024;
+        score = score + 1024;
     }
     if (matched[SCORE_V3] > 0 && matched[SCORE_D3] > 0)
-        score += 512;
-    //活3  
-    score += matched[SCORE_V3] << 10;
+        score = score + 512;
+    //活3
+    score = score + matched[SCORE_V3] << 10;
 
-    //死3 
-    score += matched[SCORE_D3] << 6;
+    //死3
+    score =score+ 1 + matched[SCORE_D3] << 7;
     //活2
-    score += 1 + matched[SCORE_V3] << 6;
+    score = score + matched[SCORE_V3] << 7;
     //死2
-    score += matched[SCORE_D2] << 4;
+    score = score + matched[SCORE_D2] << 2;
+
 
     return score;
 }
