@@ -42,7 +42,7 @@ void Panel::drawBoard(Board &b,int newX,int newY) {
 				case Board::WHITE:
 					if (x == newX && y == newY)
 						cout << "¡î";
-					else 
+					else
 						cout << "¡ð";
 					break;
 				default:
@@ -52,7 +52,7 @@ void Panel::drawBoard(Board &b,int newX,int newY) {
 					cout << "¡ñ";
 					break;
 				}
-			
+
 
 		}
 		cout<<'\n' << endl;
@@ -70,18 +70,18 @@ void Panel::printMsg(std::string msg)
 	cout << msg << endl;
 }
 void Panel::clear() {
-	//system("cls");
+	system("cls");
 }
 void Panel::clearLine(int lineNum) {
 	for (int i = 0; i < lineNum; i++)
 	{
 		cout << "\r" << "\b" << '\r';
 	}
-	
+
 }
 void Panel::getInput(int& x, int& y,Board &b)
 {
-	
+
 	while (true)
 	{
 		try
@@ -115,8 +115,8 @@ void Panel::getInput(int& x, int& y,Board &b)
 				continue;
 		}
 	}
-	
-	
 
-	
+
+
+
 }

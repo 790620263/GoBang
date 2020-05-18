@@ -1,4 +1,4 @@
-ï»¿#include "../include/Manage.h"
+#include "../include/Manage.h"
 #include <iostream>
 Manager::Manager()
 {
@@ -10,7 +10,7 @@ Manager::~Manager()
 {
 	//delete &b;
 }
-//ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ß±ï¿½ï¿½,-1ï¿½ï¿½Ê¾Æ½ï¿½ï¿½,0ï¿½ï¿½Ê¾Î´ï¿½ï¿½ï¿½ï¿½
+//·µ»ØÊ¤ÀûÕß±àºÅ,-1±íÊ¾Æ½¾Ö,0±íÊ¾Î´½áÊø
 int Manager::play(int x, int y, int playCode,int score)
 {
 	b.setPlayerCode(x, y, playCode);
@@ -18,21 +18,21 @@ int Manager::play(int x, int y, int playCode,int score)
 	panel.drawScore(x, y, score);
 
 	if (VictoryCheeker::isFull(b))
-	{//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½Æ½ï¿½ï¿½
-		panel.printMsg("Æ½ï¿½ï¿½");
+	{//ÆåÅÌÂúÁË£¬Æ½¾Ö
+		panel.printMsg("Æ½¾Ö");
 		return -1;
 	}
 	else
 	{
 		if (VictoryCheeker::have_five(b, x, y, playCode))
-		{//ï¿½ï¿½ï¿½ÎªplayerCodeï¿½Ä»ï¿½Ê¤
+		{//±àºÅÎªplayerCodeµÄ»ñÊ¤
 			if (playCode == Board::BLACK)
 			{
-				panel.printMsg("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤");
+				panel.printMsg("ºÚÆå»ñÊ¤");
 			}
 			else
 			{
-				panel.printMsg("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤");
+				panel.printMsg("°×Æå»ñÊ¤");
 			}
 			return playCode;
 		}
@@ -47,7 +47,7 @@ int Manager::ai_vs_peo()
 {
 	int winner = 0;
 	int x, y, score = 0;
-	//Ä¬ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½å£©ï¿½ï¿½ï¿½ï¿½
+	//Ä¬ÈÏÈË(°×Æå£©ÏÈÊÖ
 	while (winner==0)
 	{
 		panel.getInput(x, y, b);
@@ -69,19 +69,19 @@ int Manager::ai_vs_ai()
 	int x=b.getSize()/2, y=b.getSize()/2, score = 0;
 
 	winner= play(x, y, Board::WHITE,score);
-	//Ä¬ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//Ä¬ÈÏ°×ÆåÏÈÊÖ
 	while (winner == 0)
 	{
 		eva.getBestPosition(b, x, y, Board::BLACK, score);
 
-		//ï¿½Ôºï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//¶ÔºÚÆåÊ¹ÓÃÉî¶ÈËÑË÷
 		//deva.getBestPosition(b, x, y, Board::BLACK, score);
 
 		winner = play(x, y, Board::BLACK, score);
 
 		if (winner != 0)break;
 
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//µ¥²ãËÑË÷
 		eva.getBestPosition(b, x, y, Board::WHITE, score);
 		winner = play(x, y, Board::WHITE, score);
 	}

@@ -35,7 +35,7 @@
 	return best;
 */
 
-//Ñ¡ï¿½ï¿½ï¿½ï¿½Ð¡Öµ
+//Ñ¡Ôñ×îÐ¡Öµ
 int DeepEvaluator::peoGo(Board& b, int deep, int big, int min)
 {
 	int opponentCode = aiCode == 2 ? 1 : 2;
@@ -70,7 +70,7 @@ int DeepEvaluator::peoGo(Board& b, int deep, int big, int min)
 	return best;
 }
 
-//ï¿½Ã²ï¿½AIï¿½ï¿½ï¿½ï¿½
+//¸Ã²ãAI×ß×Ó
 int DeepEvaluator::aiGo(Board &b,int deep, int big, int min)
 {
 	isOver = VictoryCheeker::have_five(b, aiCode);
@@ -101,7 +101,7 @@ int DeepEvaluator::aiGo(Board &b,int deep, int big, int min)
 
 	return best;
 }
-//ï¿½ï¿½ï¿½ï¿½Ä³Ò»ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½Ò·ï¿½ï¿½Ä»ï¿½ï¿½á£¨4ï¿½ÓµÈ£ï¿½
+//ÆÀ¼ÛÄ³Ò»²½µÄ¾ÖÃæ,·µ»Ø¶ÔÎÒ·½µÄ»ú»á£¨4×ÓµÈ£©
 int DeepEvaluator::evaluate_state(Board& b)
 {
 	int oppoScore = 0; int myScore = 0;
@@ -114,13 +114,13 @@ int DeepEvaluator::evaluate_state(Board& b)
 
 	for (int i = 0; i < psize; i++)
 	{
-		//ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ÄµÃ·ï¿½
-			//ï¿½È¼òµ¥·ï¿½×°Ò»ï¿½ï¿½singleEvaluatorï¿½ï¿½evaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½
-		//ï¿½Ô¶Ô·ï¿½ï¿½ï¿½Ð²ï¿½Ì¶È¸ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AI
+		//ÆÀ¹ÀÃ¿¸öµãµÄµÃ·Ö
+			//ÏÈ¼òµ¥·â×°Ò»ÏÂsingleEvaluatorµÄeva·½·¨£¬ÒÔºóÔÙÐ´¿ìËÙÆ¥Åä
+		//ÒÔ¶Ô·½ÍþÐ²³Ì¶È¸ø·Ö£¬±£ÊØÐÍAI
 		oppoScore =oppoScore+ seva.evaluate(b, plist[i].x, plist[i].y, opponentCode);
 
 
-		seva.evaluate(b, plist[i].x, plist[i].y, aiCode); //ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ³Ì¶È¸ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AI
+		seva.evaluate(b, plist[i].x, plist[i].y, aiCode); //ÒÔ¼º·½ÓÅÊÆ³Ì¶È¸ø·Ö£¬½ø¹¥ÐÍAI
 		myScore = myScore+seva.evaluate(b, plist[i].x, plist[i].y, aiCode);
 
 		/*std::cout << "MYSCORE\t" << myScore << "\tOppoScore\t" << oppoScore<<std::endl;*/
@@ -131,10 +131,10 @@ int DeepEvaluator::evaluate_state(Board& b)
 	delete[] plist;
 	return myScore-oppoScore<<1;
 }
-//ï¿½ï¿½ï¿½Û¾ï¿½ï¿½æ£¬Ç°Õ°deepï¿½ï¿½
+//ÆÀ¼Û¾ÖÃæ£¬Ç°Õ°deep²½
 //int DeepEvaluator::evaluate_minmax(Board& b, int deep)
 //{
-//	//ï¿½Öµï¿½AI
+//	//ÂÖµ½AI
 //	return aiGo(b, deep);
 //}
 
@@ -142,7 +142,7 @@ void DeepEvaluator ::getBestPosi_DeepSearch(Board& b, int& x, int& y, int& score
 {
 	int psize;
 	Position* plist = Evaluator::getAvailablePosition(b, psize);
-	x = plist[0].x; y = plist[0].y;//ï¿½È³ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½
+	x = plist[0].x; y = plist[0].y;//ÏÈ³õÊ¼»¯Ò»ÏÂ
 
 	int tmpScore = INT_MAX;
 	for (int i = 0; i < psize; i++)
@@ -167,7 +167,7 @@ void DeepEvaluator ::getBestPosi_DeepSearch(Board& b, int& x, int& y, int& score
 
 void DeepEvaluator::getBestPosition(Board& b, int& x, int& y, const int playerCode, int& score)
 {
-	//ï¿½Ë´ï¿½ï¿½ï¿½playerCodeï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+	//´Ë´¦µÄplayerCode¼ÇÎªµçÄÔ
 	aiCode = playerCode;
 	getBestPosi_DeepSearch(b, x, y, score);
 }

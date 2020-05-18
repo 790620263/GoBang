@@ -1,4 +1,4 @@
-ï»¿#ifndef _DEEPEVALUATOR_H_
+#ifndef _DEEPEVALUATOR_H_
 #define _DEEPEVALUATOR_H_
 
 #include "SingleEvaluator.h"
@@ -13,7 +13,7 @@ public:
 private:
 	SingleEvaluator seva;
 
-	int aiCode = 2;//ï¿½ï¿½ï¿½ï¿½
+	int aiCode = 2;//ºÚÆå
 	const int defaultSearchDeep = 2;
 	bool isOver = false;
 

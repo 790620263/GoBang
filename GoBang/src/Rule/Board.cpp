@@ -15,7 +15,7 @@ bool Board::setPlayerCode(int x, int y, int playerCode)
 	}
 	return false;
 }
-/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½ï¿½ï¿½ï¿½ï¿½ - 1 */
+/*Èç¹û³¬³öÆåÅÌ£¬·µ»Ø - 1 */
 int Board::getPlayerCode(int x, int y)
 {
 	if (isInBoard(x, y))
@@ -28,11 +28,11 @@ void Board::getNewPosition(int& x, int& y)
 }
 int Board::getSize() { return size; }
 
-/*ï¿½ï¿½ï¿½Ø£ï¿½x,y)ï¿½ï¿½ï¿½ï¿½axisï¿½ï¿½ï¿½ï¿½Æ«ï¿½ï¿½offsetï¿½ï¿½Ä±ï¿½ï¿½
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½ï¿½ï¿½ï¿½ï¿½-1*/
+/*·µ»Ø£¨x,y)´¦ÑØaxis·½ÏòÆ«ÒÆoffset¸ñµÄ±àºÅ
+Èç¹û³¬³öÆåÅÌ£¬·µ»Ø-1*/
 int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 {
-	//int i=0, j=0;//i:xï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jï¿½ï¿½ï¿½ï¿½yï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½
+	//int i=0, j=0;//i:xÖáÆ«ÒÆÁ¿£¬j¡¢£ºyÖáÆ«ÒÆÁ¿
 	//switch (axis)
 	//{
 	//case 0:
@@ -68,17 +68,17 @@ int Board::getCodeOffsetPosi(int x, int y, int axis, int offset)
 	//	j = -1;
 	//	break;
 	//default:
-	//	//throw "ï¿½Ç·ï¿½ï¿½ï¿½axis";
-	//	std::cout << "ï¿½Ç·ï¿½ï¿½ï¿½axis" << std::endl;
+	//	//throw "·Ç·¨µÄaxis";
+	//	std::cout << "·Ç·¨µÄaxis" << std::endl;
 	//}
 	x += axisX[axis] * offset;
 	y += axisY[axis] * offset;
 	if (x >= 0 && x < this->size && y >= 0 && y < this->size)
-	{//ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	{//Èç¹û£¨x£¬y£©ÔÚÆåÅÌÄÚ
 		return board[x][y];
 	}
 	else
-	{//Ô½ï¿½ï¿½
+	{//Ô½½ç
 		return -1;
 	}
 }
